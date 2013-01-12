@@ -28,6 +28,8 @@ describe User do
   it { should respond_to(:password_confirmation) }
 
 	it { should be_valid }
+
+	it { should respond_to(:authenticate) }
 	
   describe "when name is not present" do
     before { @user.nom = " " }
@@ -48,6 +50,11 @@ describe User do
     before { @user.password_confirmation = nil }
     it { should_not be_valid }
   end
+	describe "with a password that's too short" do
+    before { @user.password = @user.password_confirmation = "a" * 5 }
+    it { should be_invalid }
+  end
+
 end
 
 
