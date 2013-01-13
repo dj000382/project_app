@@ -5,5 +5,6 @@ FactoryGirl.define do
 		labo    "labexemple"
     password "foobar"
     password_confirmation "foobar"
+		email    "michael@example.com"
   end
 end

@@ -34,6 +34,7 @@ describe "User pages" do
         fill_in "Nom",         with: "Durando"
 				fill_in "Prenom",         with: "Jimmy"
         fill_in "Labo",        with: "LaboExemple"
+				fill_in "Email",        with: "user@example.com"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
       end
