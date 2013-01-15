@@ -15,6 +15,23 @@ describe "User pages" do
     it { should have_selector('title', text: 'All users') }
     it { should have_selector('h1',    text: 'All users') }
 
+  	describe "profile page" do
+    	let(:user) { FactoryGirl.create(:user) }
+    	let!(:m1) { FactoryGirl.create(:publication, user: user, content: "Foo", title: "title1", year: 2011) }
+    	let!(:m2) { FactoryGirl.create(:publication, user: user, content: "Bar", title: "title2", year: 2011) }
+
+    	before { visit user_path(user) }
+
+    	it { should have_selector('h1',    text: user.nom) }
+    	it { should have_selector('title', text: user.nom) }
+
+    	describe "publications" do
+      	it { should have_content(m1.content) }
+      	it { should have_content(m2.content) }
+      	it { should have_content(user.publications.count) }
+    	end
+  	end
+
     describe "pagination" do
 
       before(:all) { 30.times { FactoryGirl.create(:user) } }

@@ -44,6 +44,11 @@ class UsersController < ApplicationController
     @users = User.paginate(page: params[:page])
   end
 
+	def show
+    @user = User.find(params[:id])
+    @publications = @user.publications.paginate(page: params[:page])
+  end
+
   private
 
     def signed_in_user

@@ -11,4 +11,10 @@ FactoryGirl.define do
       admin true
     end
   end
+	factory :publication do
+		title "title exemple"
+		year "2011"
+    content "Lorem ipsum"
+    user
+  end
 end
